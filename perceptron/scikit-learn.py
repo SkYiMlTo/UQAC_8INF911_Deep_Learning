@@ -21,9 +21,6 @@ ppn = Perceptron(max_iter=400, eta0=0.01, random_state=0)
 ppn.fit(X_train_std, y_train)
 
 y_pred = ppn.predict(X_test_std)
-nb_diff = 0
-for i, j in zip(y_test, y_pred):
-    if i != j:
-        nb_diff += 1
+nb_diff = sum(i != j for i, j in zip(y_test, y_pred))
 print('Misclassified samples: %d' % nb_diff)
 print('Accuracy: %.2f' % accuracy_score(y_test, y_pred))

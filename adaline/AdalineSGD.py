@@ -52,12 +52,10 @@ class AdalineSGD(object):
         """
         self._initialize_weights(X.shape[1])
         self.cost_ = []
-        for i in range(self.n_iter):
+        for _ in range(self.n_iter):
             if self.shuffle:
                 X, y = self._shuffle(X, y)
-            cost = []
-            for xi, target in zip(X, y):
-                cost.append(self._update_weights(xi, target))
+            cost = [self._update_weights(xi, target) for xi, target in zip(X, y)]
             #avg_cost = sum(cost) / len(y)
             #cost = (errors ** 2).sum() / 2.0
 
@@ -92,8 +90,7 @@ class AdalineSGD(object):
         error = (target - output)
         self.w_[1:] += self.eta * xi.dot(error)
         self.w_[0] += self.eta * error
-        cost = 0.5 * error ** 2
-        return cost
+        return 0.5 * error ** 2
 
     def net_input(self, X):
         """Calculate net input"""
