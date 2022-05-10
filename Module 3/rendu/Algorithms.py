@@ -86,8 +86,7 @@ class Algorithms:
 
     def __print_classes(self, classes):
         print("Liste des classes :")
-        temp = list(set(classes))
-        temp.sort()
+        temp = sorted(set(classes))
         for k in temp:
             print(k.decode("utf-8"), end=", ")
         print('\n')

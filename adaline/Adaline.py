@@ -42,7 +42,7 @@ class AdalineGD(object):
         self.w_ = np.zeros(1 + X.shape[1])
         self.cost_ = []
 
-        for i in range(self.n_iter):
+        for _ in range(self.n_iter):
             # Please note that the "activation" method has no effect
             # in the code since it is simply an identity function. We
             # could write `output = self.net_input(X)` directly instead.
